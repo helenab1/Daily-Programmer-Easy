@@ -1,0 +1,30 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+using namespace std;
+
+int main()	{
+	
+	string name, age, username;
+	fstream dataFile;
+	
+	cout << "Please enter your name: ";
+	cin >> name;
+	cout << "Please enter your age: ";
+	cin >> age;
+	cout << "Please enter your username: ";
+	cin >> username;
+	
+	cout << "Your name is " << name << ", you are " << age << " years old, and your username is " << username << ".";
+
+	// Trying to figure out how to write to a file with fstream.
+	// Continue at home.
+	dataFile.open("demofile.txt", ios::out);
+	dataFile << name << "\n";
+	dataFile << age << "\n";
+	dataFile << username << "\n";
+	dataFile.close();
+	
+return 0;
+	
+}
