@@ -17,8 +17,7 @@ int main()	{
 	
 	cout << "Your name is " << name << ", you are " << age << " years old, and your username is " << username << ".";
 
-	// Trying to figure out how to write to a file with fstream.
-	// Continue at home.
+	// For bonus: writing to a file with fstream.
 	dataFile.open("demofile.txt", ios::out);
 	dataFile << name << "\n";
 	dataFile << age << "\n";
