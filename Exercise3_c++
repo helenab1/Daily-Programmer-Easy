@@ -1,0 +1,4 @@
+// Cipher for 'a' + 1 = 'b'
+// Input into an array
+// Loop through each letter in array
+// Display as char + 1
