@@ -1,0 +1,86 @@
+#include <iostream>
+#include <iomanip>
+#include <vector>
+using namespace std;
+
+int main()
+{			
+	double settlement, fee, costs, total;
+	
+	char choice;
+	cout << "Enter 's' for standard, 'd' for discounted, 't' for trial and 'm' for minor: ";
+	cin >> choice;
+	
+	switch(choice)
+	{
+		case 's': 
+		cout << "Enter settlement amount: ";
+		cin >> settlement;
+		fee = settlement/3;
+		cout << "Enter costs: ";
+		cin >> costs;
+		total = (settlement - fee - costs);
+		break;
+		
+		case 'd':
+		cout << "Enter settlement amount: ";
+		cin >> settlement;
+		cout << "Enter costs: ";
+		cin >> costs;
+		fee = (settlement - costs)/3;
+		total = (settlement - fee - costs);
+		break;
+		
+		case 't':
+		cout << "Enter settlement amount: ";
+		cin >> settlement;
+		fee = (settlement * .40);
+		cout << "Enter costs: ";
+		cin >> costs;
+		total = (settlement - fee - costs);
+		break;
+		
+		case 'm':
+		cout << "Enter settlement amount: ";
+		cin >> settlement;
+		fee = settlement/4;
+		cout << "Enter costs: ";
+		cin >> costs;
+		total = (settlement - fee - costs);
+		break;
+	}
+		
+    int numLiens;
+    cout << "How many liens?\n";
+    cin >> numLiens;
+    vector<double> lienAmount(numLiens);
+	
+    // Vector for liens.
+    cout << "Enter the amount for each lien:\n";
+    for(int index = 0; index < numLiens; index++)
+	{
+        cout << "Lien amount #" << (index + 1) << ": ";
+        cin >> lienAmount[index];
+	}
+	
+	// Final display.
+	cout << fixed << showpoint << setprecision(2);
+	cout << "Gross Settlement: " << settlement;
+	cout << "\nCosts Advanced by Law Firm: " << costs;
+	cout << "\nAttorney's Fee: " << fee;
+	cout << "\nGross Settlement Less Costs/Fees: " << (settlement - fee - costs);
+	
+    // Display liens.
+    cout << "\nLess Authorized Deductions:\n";
+    for(int index = 0; index < numLiens; index++)
+	{
+        cout << "Lien #" << (index + 1) << ": ";
+        cout << lienAmount[index] << " ";
+	}
+	
+	cout << "\nNet amount to client: " << total;
+	cout << "\n*Check to attorney: " << (fee + costs);
+		
+	return 0;
+}
+
