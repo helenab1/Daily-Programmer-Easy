@@ -1,4 +1,33 @@
-// Cipher for 'a' + 1 = 'b'
-// Input into an array
-// Loop through each letter in array
-// Display as char + 1
+// Caesar cipher that changes each letter in an input
+// to the next letter in the alphabet.
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()	{
+
+	const int SIZE = 81;
+	char line[SIZE];		// Holds a C-string of no more than 80 elements.
+	int count = 0;		// Loop counter variable.
+	
+	// Get a line of input.
+	cout << "Enter a sentence of no more than " << (SIZE - 1) << " characters for encryption: \n";
+	cin.getline(line, SIZE);
+	
+	// Display the input one character at a time.
+	while (line[count] != '\0')	{
+		char letter = line[count];
+			if(letter == 'z') 
+				cout << 'a';
+			else if(letter == 'Z')
+				cout << 'A';
+			else
+				cout << static_cast<char>(letter + 1);
+		count++;
+	}
+
+
+return 0;
+	
+}
