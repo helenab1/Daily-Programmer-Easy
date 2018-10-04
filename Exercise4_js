@@ -1,0 +1,12 @@
+// Create a random password generator!
+// For extra credit, allow the user to specify the amount of passwords to generate.
+// For even more extra credit, allow the user to specify the length of the strings he wants to generate!
+
+var num = prompt("How many passwords do you need?");
+var length = prompt("How long should each password be?");
+var count = 0;
+
+while(count < num) {
+	console.log(Math.random().toString(36).substr(2, length));
+	count++;
+}
