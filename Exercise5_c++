@@ -1,0 +1,54 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main()	{
+
+	string myUser, myPassword;
+
+	// Practice writing a username and password to a data file.
+	fstream dataFile;
+
+	// Creating the file that holds the correct username and password:
+	// cout << "Opening file...\n";
+	dataFile.open("pwfile.txt", ios::out);	// Open for output
+	// cout << "Now writing the correct username and password to the file...\n";
+	dataFile << "honey\n";	// Writing username.
+	dataFile << "badger\n";	// Writing password.
+	dataFile.close();	// Close file.
+
+	cout << "Enter username: \n";		// User inputs username and password.
+	cin >> myUser;
+	cout << "Enter password: \n";
+	cin >> myPassword;
+
+	dataFile.open("pwfile.txt", ios::in);	// Assign contents of file to string
+	string username;
+	getline(dataFile, username, '\n');		// Getline explained: (Reads from here, assigns to here, stop assigning when you reach here (\n is standard if you don't add anything).
+	string password;
+	getline(dataFile, password, '\n');
+	dataFile.close();
+
+	// Compare username and password.
+	if(myUser == username && myPassword == password) {
+		cout << "\nWelcome!\n";
+	}
+	else {
+		cout << "\nIncorrect username or password.\n";
+		cout << "I guess we have to cheat by reading that file in here by using .rdbuf()...\n";
+		dataFile.open("pwfile.txt");
+		if(dataFile.is_open())
+		cout << dataFile.rdbuf();
+		cout << "Please restart";
+	}
+		
+
+	system("pause");
+
+return 0;
+
+}
+
+	
