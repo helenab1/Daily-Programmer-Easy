@@ -5,13 +5,26 @@ using namespace std;
 
 int main()	{
 
-    long double pi;
-    pi = 3.0 + 4.0/(2.0*3.0*4.0) - 4.0/(4.0*5.0*6.0) + 4.0/(6.0*7.0*8.0) - 4.0/(8.0*9.0*10.0) + 4.0/(10.0*11.0*12.0) - 4.0/(12.0*13.0*14.0) + 4.0/(14.0*15.*16.0) - 4.0/(16.0*17.0*18.0) +4.0/(18.0*19.0*20.0);
-    cout << showpoint << setprecision(30);
-    cout << pi;
-    
-    if(pi != 3.141592653589793238462643383279)          // Correct answer: 3.141592653589793238462643383279
-        cout << "\nThat ain't quite right.";
+	double a = 2.0, b = 3.0, c = 4.0;
+	double decimal = 0.0;
+	int num = 0;
+
+	cout << "How accurate can you make pi? Enter the number of Nilakantha series you wish to perform:\n";
+	cin >> num;
+
+	for(int i = 0; i < num; i++) {				// Computes the decimal part of pi using Nilakantha series, the number of times is dependant on what the user input.
+		decimal += (4.0/(a*b*c));
+		decimal -= (4.0/(c*(c+1.0)*(c+2.0)));
+		a = c + 2.0, b = c + 3.0, c = c + 4.0;
+	}
+	
+	double pi = 3.0 + decimal;
+	cout << fixed << setprecision(30) << pi;
+
+	if(pi != 3.141592653589793238462643383279)          // Correct answer: 3.141592653589793238462643383279
+        cout << "\nNot quite accurate! You want 3.141592653589793238462643383279.\n";
+
+system("pause");
 
 return 0;
 
