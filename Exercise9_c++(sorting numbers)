@@ -1,0 +1,47 @@
+// write a program that will allow the user to input digits, 
+// and arrange them in numerical order.
+// for extra credit, have it also arrange strings in alphabetical order.
+
+// store in array[]
+// to organize numerically:
+
+
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main() {
+
+	vector<int> numbers(10);
+	
+	cout << "Please enter 10 numbers: " << endl;
+	
+	for(unsigned int i = 0; i < numbers.size(); i++) {
+		cin >> numbers[i];	
+	}
+	
+	cout << "The numbers from lowest to highest are: " << endl;
+	
+	for(unsigned int i = 0; i < numbers.size(); i++) {
+		unsigned int count = i+1;
+		unsigned int temp = i;
+		if(numbers[i] > numbers[count]) {
+			// Not enough to order them, this is only moving one over.
+			// Need correct way of sorting numerically.
+			numbers[i] = numbers[count];	
+			numbers[count] = numbers[temp];
+		}
+	}
+	
+	for(unsigned int i = 0; i < numbers.size(); i++) {
+		cout << numbers[i];
+		cout << " ";
+	}
+	
+	// int numValues = numbers.size();
+	// cout << numValues;
+	
+	// for(int i = 0; i < ; i++) 
+
+}
