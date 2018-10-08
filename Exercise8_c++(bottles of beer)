@@ -1,0 +1,28 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+int beers;
+
+cout << "How many bottles of beer are on the wall right now?" << endl;
+cin >> beers;
+
+// New variable so the counter doesn't catch up with number of beers in the loop.
+int currentBeers = beers;
+
+for(int i =0; i < beers; i++) {
+	if(currentBeers == 1) 
+		cout << "1 bottle of beer on the wall! One bottle of beer! You take it down and pass it around, 0 bottles of beer on the wall!\n";
+	else
+		cout << currentBeers << " bottles of beer on the wall, " << currentBeers << " bottles of beer! ";
+		cout << "You take one down and pass it around, " << currentBeers-1 << " bottles of beer on the wall!\n";
+		currentBeers--;
+}
+
+system("pause");
+
+return 0;
+
+}
