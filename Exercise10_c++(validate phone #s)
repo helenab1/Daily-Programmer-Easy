@@ -1,0 +1,71 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	
+	/*
+	Code for validating phone numbers that doesn't check if the 
+	pattern is correct and relies on break to escape the loop:
+	*/
+	
+	const int SIZE = 15;
+	char phoneNumber[SIZE];
+	int count = 0;
+	
+	cout << "Enter a valid phone number (no more than 14 characters): \n";
+	cin.getline(phoneNumber, SIZE);
+	
+	cout << "Validating:\n";
+	while(phoneNumber[count] != '\0') {
+		if(phoneNumber[count] == ('-' || '(' || ')' || '.' || '1' || '2' || '3' || '4' || '5' || '6' || '7' || '8' || '9')) {
+		cout << " Valid char\n";
+		cout << phoneNumber[count];
+		count++;
+		}
+		else {
+			cout << "Invalid input";
+			break;
+		}
+	}
+		
+return 0;
+
+}
+
+/**************************************************************
+REGEX TUTORIAL INFO:
+
+#include <iostream>
+#include <regex>
+#include <string>
+
+using namespace std;
+
+// testing regex tutorial - this only works for positive and negative
+// how to accept -dashes and .periods?
+int main () {
+	
+	string input;
+	regex integer("(\\+|-)?[[:digit:]]+");
+	
+	// As long as input is correct ask for another number
+	while(true) {
+		cout << "Give me an integer!" << endl;
+		cin >> input;
+		
+		if(!cin) break;
+		
+		// Exits if user inputs q
+		if(input == "q")
+			break;
+		
+		if(regex_match(input, integer))
+			cout << "integer" << endl;
+		else{
+			cout << "Invalid input" << endl;
+		}
+	}
+
+return 0;	
+}
+**************************************************************/
