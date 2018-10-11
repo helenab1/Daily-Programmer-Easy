@@ -1,0 +1,123 @@
+#include<iostream>
+using namespace std;
+
+int getCentCode(int);
+
+int main ()	{
+
+	// Input date
+	
+	int century = 19;	// Function that returns century code from number.
+	int month = 6;		// Function that returns month code from number.
+	
+	int year = 89;
+	int date = 18;
+	
+	/* Formula:
+	year / 4 = int yearByFour; // int division, no remainder
+	centCode + year + yearByFour + monthCode + date = int sum;
+	sum % 7 = int dayOfWeek;
+	*/
+	
+	// Function that returns day of week (Sunday for 0, etc.)
+	// from int 0 - 6.
+	
+	int centCode = getCentCode(century);
+	cout << centCode;
+
+return 0;
+
+}
+
+//***************************************************************
+//Definition of function getCentCode. This function takes the   * 
+//first two digits of the year and returns the century code for *    
+//the Gaussian algorithm in an int variable.                    *                              *
+//***************************************************************
+
+int getCentCode(int century) {
+	switch(century) {
+		case 17:
+		case 21:
+		case 25:
+			return 4;
+			break;
+		case 18:
+		case 22:
+		case 26:
+			return 2;
+			break;
+		case 19:
+		case 23:
+		case 27:
+			return 0;
+			break;	
+		case 20:
+		case 24:
+		case 30:
+			return 6;
+			break;
+	}
+}
+
+// Should be a way to calculate the repeating pattern above with
+// any year.  But can use this table function for the month and
+// day of week.
+
+******NOTES*******
+/* The program should take three arguments. 
+The first will be a day, the second will be month, 
+and the third will be year. 
+Then, your program should compute the day of the week 
+that date will fall on.
+*/
+
+1700–1799     4
+1800–1899     2
+1900–1999     0
+2000–2099     6
+2100–2199     4
+2200–2299     2
+2300–2399     0
+2400–2499     6
+2500–2599     4
+2600–2699     2
+You can clearly see the pattern “6 4 2 0”
+
+Here’s the month table.
+
+Month		Common  	Leap
+January 	0  		6
+February	3 		2
+March		3		3
+April		6		6
+May			1		1
+June		4		4
+July		6		6
+August  	2		2
+September	5		5
+October 	0		0
+November	3		3
+December	5		5
+Columns 2 and 3 differs only for January and February.
+
+Clearly the day table is as follows.
+
+Sunday  	0
+Monday  	1
+Tuesday 	2
+Wednesday	3
+Thursday	4
+Friday  	5
+Saturday	6
+Now let’s go back to the algorithm.
+
+Using these tables and applying a simple formula we can calculate what day was on some given date. Here are the steps of this algorithm.
+
+Get the number for the corresponding century from the centuries table;
+Get the last two digits from the year;
+Divide the number from step 2 by 4 and get it without the remainder;
+Get the month number from the month table;
+Sum the numbers from steps 1 to 4 AND add in the month day (18 as in 6/18/89);
+Divide it by 7 and take the remainder;
+Find the result of step 6 in the days table;
