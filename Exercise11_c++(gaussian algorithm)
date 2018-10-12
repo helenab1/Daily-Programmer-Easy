@@ -1,29 +1,61 @@
 #include<iostream>
+#include<string>
+#include<sstream>
 using namespace std;
 
 int getCentCode(int);
+int getMonthCode(int);
 
 int main ()	{
 
-	// Input date
+	int century, year, month, date;
+	string fullDate;
+	cout << "Please enter your date in the following month, day, year formula as follows: 06 18 19 89: " << endl;  // Don't know how to accept the year as "2018" with century and year together.
+	getline(cin, fullDate);
+	stringstream(fullDate) >> month >> date >> century >> year;
 	
-	int century = 19;	// Function that returns century code from number.
-	int month = 6;		// Function that returns month code from number.
+/*
+	int century = 20;	
+	int month = 10;		
 	
-	int year = 89;
-	int date = 18;
-	
-	/* Formula:
-	year / 4 = int yearByFour; // int division, no remainder
-	centCode + year + yearByFour + monthCode + date = int sum;
-	sum % 7 = int dayOfWeek;
-	*/
-	
-	// Function that returns day of week (Sunday for 0, etc.)
-	// from int 0 - 6.
-	
+	int year = 18;
+	int date = 12;
+*/
+
 	int centCode = getCentCode(century);
-	cout << centCode;
+	int monthCode = getMonthCode(month);	
+
+	// Formula for day of the week:
+	int yearByFour = (year / 4); // int division, no remainder
+	int sum = (centCode + year + yearByFour + monthCode + date);
+	int dayOfWeek = (sum % 7);
+
+	// Display day of the week!
+	switch(dayOfWeek) {
+		case 0:
+			cout << "Sunday\n";
+			break;
+		case 1:
+			cout << "Monday\n";
+			break;
+		case 2:
+			cout << "Tuesday\n";
+			break;
+		case 3:
+			cout << "Wednesday\n";
+			break;
+		case 4:
+			cout << "Thursday\n";
+			break;
+		case 5:
+			cout << "Friday\n";
+			break;
+		case 6:
+			cout << "Saturday\n";
+			break;
+	}
+
+system("pause");
 
 return 0;
 
@@ -32,92 +64,54 @@ return 0;
 //***************************************************************
 //Definition of function getCentCode. This function takes the   * 
 //first two digits of the year and returns the century code for *    
-//the Gaussian algorithm in an int variable.                    *                              *
+//the Gaussian algorithm in an int variable calculated by using *       
+//%4 and taking the code from the century chart.                *                             
 //***************************************************************
 
 int getCentCode(int century) {
-	switch(century) {
-		case 17:
-		case 21:
-		case 25:
-			return 4;
-			break;
-		case 18:
-		case 22:
-		case 26:
-			return 2;
-			break;
-		case 19:
-		case 23:
-		case 27:
-			return 0;
-			break;	
-		case 20:
-		case 24:
-		case 30:
-			return 6;
-			break;
-	}
+	if(((century+4)%4) == 1)
+		return 4;
+	else if(((century+4)%4) == 2)
+		return 2;
+	else if(((century+4)%4) == 3)
+		return 0;
+	else if(((century+4)%4) == 0)
+		return 6;
 }
 
-// Should be a way to calculate the repeating pattern above with
-// any year.  But can use this table function for the month and
-// day of week.
+//***************************************************************
+//Definition of function getMonthCode. This function uses a     * 
+//simple switch table to return the correct month code.         *                                
+//***************************************************************
 
-******NOTES*******
-/* The program should take three arguments. 
-The first will be a day, the second will be month, 
-and the third will be year. 
-Then, your program should compute the day of the week 
-that date will fall on.
-*/
-
-1700–1799     4
-1800–1899     2
-1900–1999     0
-2000–2099     6
-2100–2199     4
-2200–2299     2
-2300–2399     0
-2400–2499     6
-2500–2599     4
-2600–2699     2
-You can clearly see the pattern “6 4 2 0”
-
-Here’s the month table.
-
-Month		Common  	Leap
-January 	0  		6
-February	3 		2
-March		3		3
-April		6		6
-May			1		1
-June		4		4
-July		6		6
-August  	2		2
-September	5		5
-October 	0		0
-November	3		3
-December	5		5
-Columns 2 and 3 differs only for January and February.
-
-Clearly the day table is as follows.
-
-Sunday  	0
-Monday  	1
-Tuesday 	2
-Wednesday	3
-Thursday	4
-Friday  	5
-Saturday	6
-Now let’s go back to the algorithm.
-
-Using these tables and applying a simple formula we can calculate what day was on some given date. Here are the steps of this algorithm.
-
-Get the number for the corresponding century from the centuries table;
-Get the last two digits from the year;
-Divide the number from step 2 by 4 and get it without the remainder;
-Get the month number from the month table;
-Sum the numbers from steps 1 to 4 AND add in the month day (18 as in 6/18/89);
-Divide it by 7 and take the remainder;
-Find the result of step 6 in the days table;
+int getMonthCode(int month) {
+	switch(month) {
+		case 1:
+		case 10:
+			return 0;
+			break;
+		case 2:
+		case 3:
+		case 11:
+			return 3;
+			break;
+		case 4:
+		case 7:
+			return 6;
+			break;
+		case 5:
+			return 1;
+			break;
+		case 6:
+			return 4;
+			break;
+		case 8: 
+			return 2;
+			break;
+		case 9:
+		case 12:
+			return 5;
+			break;
+}
+	
+}
