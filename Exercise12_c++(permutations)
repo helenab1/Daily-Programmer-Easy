@@ -1,0 +1,30 @@
+#include<iostream>
+#include<string>
+#include<algorithm>
+
+using namespace std;
+
+int main ()	{
+
+	string perm = "hi!";
+
+	//***************************************************************************************
+	// Sort function sorts the elements in a range (first, last) in ascending order.        *
+	// Uses string.begin() and string.end() to get the first and last letter of the string. *
+	// This alphabetizes and gets the first permutation for the do while loop.              *
+	// Without it, hi! displays first in the loop.											                    *
+	//***************************************************************************************
+
+	sort(perm.begin(), perm.end());
+	
+	// Permutations function rearranges the elements in the range.
+	do
+		cout << perm << endl;
+	while(next_permutation(perm.begin(), perm.end()));
+	
+system("pause");
+
+return 0;
+
+}
+
