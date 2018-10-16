@@ -1,0 +1,34 @@
+//Input: list of elements and a block size k or some other variable 
+//of your choice.
+//Output: return the list of elements with every block of k elements 
+//reversed, starting from the beginning of the list.
+//For instance, given the list 12, 24, 32, 44, 55, 66 and the block size 
+//2, the result is 24, 12, 44, 32, 66, 55.
+
+#include<iostream>
+using namespace std;
+
+int main () {
+	
+	int numbers[6] = {1, 2, 3, 4, 5, 6};
+	int k = 2;	// Block size variable.
+	int i = 0;
+
+	
+	for(int i = i; i < 6; i = i + k) {	// Just need to count by "k" to keep t in the block size.
+		if(numbers[i] < numbers[i+1]) { // Only sorts by two because of this condition. Will need a different condition to sort by more.
+			int temp = numbers[i];
+			numbers[i] = numbers[i+1];
+			numbers[i+1] = temp;
+		}
+		cout << numbers[i] << " " << numbers[i+1] << " ";
+	}
+		
+	
+	
+	
+	
+	
+return 0;
+
+}
