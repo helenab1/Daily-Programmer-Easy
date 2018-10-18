@@ -1,0 +1,27 @@
+#include<iostream>
+#include<fstream>
+#include<iomanip>
+#include<string>
+#include<cctype>
+using namespace std;
+
+int main ()	{
+
+	string fileContents;
+	fstream dataFile;
+
+	cout << "Enter your text file contents to be right-justified. ";
+	getline(cin, fileContents, '\n');
+
+	// Open file
+	dataFile.open("rightjustifyme.txt", ios::out);
+	dataFile << setw(50) << right;
+	dataFile << fileContents;
+	dataFile.close();
+	
+system("pause");
+
+return 0;
+
+}
+
