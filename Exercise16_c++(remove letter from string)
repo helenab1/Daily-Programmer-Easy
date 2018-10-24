@@ -1,0 +1,34 @@
+#include<iostream>
+#include<string>
+#include<sstream>
+using namespace std;
+
+void remove(string&, const string);
+
+int main() {
+
+	string ss, first, second;
+	getline(cin, ss);
+	stringstream(ss) >> first >> second;
+
+	remove(first, second);
+
+	cout << first << " " << second << endl;
+
+	
+	system("pause");
+
+	return 0;
+
+}
+
+/*Function from person on reddit. Only works to remove from the first word.
+Need to study these string terms to figure it out.*/
+void remove(string& first, const string second) {
+	for (string::iterator i = first.begin(); i < first.end(); i++) {
+		if (second.find(*i) != string::npos) {
+			first.erase(i);
+			i--;
+		}
+	}
+}
