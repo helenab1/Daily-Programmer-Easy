@@ -1,0 +1,79 @@
+/* Often times in commercials, phone numbers contain letters so that 
+they're easy to remember (e.g. 1-800-VERIZON). Write a program that
+will convert a phone number that contains letters into a phone number
+with only numbers and the appropriate dash. 
+Example Execution: Input: 1-800-COMCAST Output: 1-800-266-2278 */
+
+#include<iostream>
+#include<string>
+#include<algorithm>
+using namespace std;
+
+int main() {
+    
+    string str;
+	
+	cout << "Enter your phone number in the following format: 1-800-COMCAST ";
+	cin >> str;
+	
+	// Transform variable to uppercase.
+	transform(str.begin(), str.end(), str.begin(), ::toupper);
+	
+	// Loops through each char in the string, converts to a char
+	// So that a switch statement can be used to convert the letters
+	// To their corresponding number.
+	for(int i = 0; i < str.length(); i++) {
+		char ch = str.at(i);
+		switch(ch) {
+			case 'A':
+			case 'B':
+			case 'C':
+				cout << 2;
+				break;
+			case 'D':
+			case 'E':
+			case 'F':
+				cout << 3;
+				break;
+			case 'G':
+			case 'H':
+			case 'I':
+				cout << 4;
+				break;
+			case 'J':
+			case 'K':
+			case 'L':
+				cout << 5;
+				break;
+			case 'M':
+			case 'N':
+			case 'O':
+				cout << 6;
+				break;
+			case 'P':
+			case 'Q':
+			case 'R':
+			case 'S':
+				cout << 7;
+				break;
+			case 'T':
+			case 'U':
+			case 'V':
+				cout << 8;
+				break;
+			case 'W':
+			case 'X':
+			case 'Y':
+			case 'Z':
+				cout << 9;
+				break;
+			default:
+				cout << ch;
+		}
+	}
+	
+	
+	
+return 0;
+
+}
