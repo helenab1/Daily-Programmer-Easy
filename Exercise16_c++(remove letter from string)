@@ -1,34 +1,53 @@
+/*This program searches for matching letters within two strings, and
+if it finds any that are matching, does not display those letters.
+Example: Input of "Daily Programmer" becomes "Dily Progrmmer".*/
 #include<iostream>
 #include<string>
 #include<sstream>
 using namespace std;
 
-void remove(string&, const string);
-
-int main() {
-
-	string ss, first, second;
-	getline(cin, ss);
-	stringstream(ss) >> first >> second;
-
-	remove(first, second);
-
-	cout << first << " " << second << endl;
-
+int main () {
 	
-	system("pause");
-
-	return 0;
-
-}
-
-/*Function from person on reddit. Only works to remove from the first word.
-Need to study these string terms to figure it out.*/
-void remove(string& first, const string second) {
-	for (string::iterator i = first.begin(); i < first.end(); i++) {
-		if (second.find(*i) != string::npos) {
-			first.erase(i);
-			i--;
-		}
+	/*Example:
+	string str = "BatCat";
+	string str2 = "Cat";
+	
+	size_t found = str.find(str2.at(0)); // C found at 3!
+	
+	if(found != std::string::npos)
+		cout << "C found at : " << found << "\n";
+	*/
+	
+	string bothStrs, str, str2;
+	
+	cout << "Enter two strings separated by a space: ";
+	getline(cin, bothStrs);
+	stringstream(bothStrs) >> str >> str2;
+	
+	// Loops through and searches the second string for any letters from
+	// the first string taken as substrings with str.at()
+	for(int i = 0; i < str.length(); i++) {
+		size_t found = str2.find(str.at(i));
+		if (found != std::string::npos) // If found does not equal no position? Don't fully grasp how this function works but it does.
+			cout << "";
+		else
+			cout << str.at(i);
 	}
+	
+	cout << " ";
+	
+	// Loops through and searches the second string for any letters from
+	// the first string taken as substrings with str.at()
+	for(int i = 0; i < str2.length(); i++) {
+		size_t found = str.find(str2.at(i));
+		if(found != std::string::npos)
+			cout << "";
+		else	
+			cout << str2.at(i);
+	}
+	
+	
+	
+return 0;
+
 }
