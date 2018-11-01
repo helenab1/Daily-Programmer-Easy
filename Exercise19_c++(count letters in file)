@@ -1,0 +1,34 @@
+// This should count the numbers of letters in a text file but needs to update
+// to exclude certain characters in the Sherlock Holmes text.
+#include<iostream>
+#include<string>
+#include<fstream>
+
+using namespace std;
+
+int main () {
+	
+	string line;
+	int sum = 0;
+	ifstream inData;
+	inData.open("countletters.txt"); // Rename
+	
+	while(!inData.eof()) {// !Eof = not encountered end of file
+		getline(inData, line);
+		
+		int numofChars = line.length();
+		
+		for(unsigned int n = 0; n < line.length(); n++) {
+			if(line.at(n) == ' ') {
+				numofChars--;
+			}
+		}
+		sum = numofChars + sum;
+	}
+	
+	cout << "Number of characters: " << sum << endl;
+	
+	
+return 0;
+
+}
