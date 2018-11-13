@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+	
+	cout << "2" << " ";
+	bool prime = true;
+	
+	for(int i = 3; i < 2000; i += 2) {
+		prime = true;
+		for(int j = 3; j < sqrt(double(i)); j += 2) { // Finds the least number of divisors by finding the square root of i (no need to keep looping after that)
+			if(!(i%j)) {	// If no modulus when dividing i by j, it's not prime.
+				prime = false;
+				break;
+			}
+		}
+		if(prime)
+			cout << i << " ";
+	}
+	
+return 0;
+
+}
