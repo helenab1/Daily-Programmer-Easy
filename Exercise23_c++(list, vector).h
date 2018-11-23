@@ -26,7 +26,7 @@ int main() {
 	half = listSize / 2;
 	remainder = listSize % 2;
 	
-	// Display list with two loops.
+	// Display list with one loops.
 	for (int i = 0; i < half; i++) {
 		cout << list[i];
 		cout << "\t";
