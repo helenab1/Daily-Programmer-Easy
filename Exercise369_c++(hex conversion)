@@ -1,0 +1,27 @@
+#include<iostream>
+#include<sstream>
+
+void printHex (int);
+
+int main() {
+
+    int red, green, blue;
+
+    std::cout << "Enter your red, green, and blue channel values as integers: ";
+    std::cin >> red >> green >> blue;
+
+    std::cout << "#";
+    printHex(red);
+    printHex(green);
+    printHex(blue);
+
+return 0;
+}
+
+void printHex(int color) {
+
+    if(color <= 15) 
+    std::cout << "0" << std::hex << color;
+    else 
+    std::cout << std::hex << color;
+}
