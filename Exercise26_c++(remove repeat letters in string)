@@ -1,0 +1,26 @@
+#include<iostream>
+#include<string>
+#include<sstream>
+
+// prepend or append string with a repeat of the letter?
+// change loop condition to string length + 1?
+
+int main () {
+	
+	std::string str = "balloon";
+	// std::letter = str.at(0);	Does not like this at all
+
+	/*std::cout << "Enter your string: ";
+	std::cin >> str;*/
+	
+	for(int i = 1; i < str.length(); i++) {
+		int j = i - 1;
+		if(str.at(i) != str.at(j))
+			std::cout << str.at(j);
+		else
+			;
+	}
+
+return 0;
+
+}
