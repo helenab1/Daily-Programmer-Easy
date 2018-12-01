@@ -1,25 +1,27 @@
 #include<iostream>
 #include<string>
-#include<sstream>
-
-// prepend or append string with a repeat of the letter?
-// change loop condition to string length + 1?
 
 int main () {
 	
-	std::string str = "balloon";
-	// std::letter = str.at(0);	Does not like this at all
-
-	/*std::cout << "Enter your string: ";
-	std::cin >> str;*/
+	// std::string str = "balloon"; (Test)
+	std::string str;
+	std::cout << "Enter the string you wish to remove consecutive letters from: ";
+	std::cin >> str;
+	std::cout << str.at(0);
 	
+	/* This for loop works but will not output first letter because it can't go to -1.
+	* Program outputs first letter above, and it still checks to make sure the next letter
+	* is not the same or it deletes it. Tested and works with "aaaalloon." */
+
 	for(int i = 1; i < str.length(); i++) {
 		int j = i - 1;
 		if(str.at(i) != str.at(j))
-			std::cout << str.at(j);
+			std::cout << str.at(i);
 		else
 			;
 	}
+
+	system("pause");
 
 return 0;
 
