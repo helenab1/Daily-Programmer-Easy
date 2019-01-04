@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+
+int main()
+{
+    int sum = 4;
+    // int numbers[6] = {2, 7, 6, 3, 2, 1};
+    std::vector<int> list {2, 7, 6, 3, 2, 1};
+
+    for(int i = 0; i < list.size();  i++) {
+        //std::cout << list[i] << " ";
+        for(int j = 1; j < (list.size() - 1); j++) {
+           if((list[i] + list[j]) == sum)
+                std::cout << list[i] << " + " << list[j] << " are equal to 4!";
+        }
+    }
+
+    return 0;
+}
