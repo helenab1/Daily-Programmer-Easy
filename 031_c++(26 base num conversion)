@@ -1,0 +1,103 @@
+/* Write a function that takes two base-26 numbers in which digits are represented by letters 
+with A=0, B=1, … Z=25 and returns their product using the same notation. 
+As an example, CSGHJ × CBA = FNEUZJA. 
+Your task is to write the base-26 multiplication function.
+Try to be very efficient in your code! */
+
+/* At this point my program can add 'ABC' + 'DEF' to get 'P' which is correct using one vector, an iterator, the find algorithm and two loops.
+To complete the problem, it needs to be able to take user input, and also parse the sum into letters. For example, if I try a variant of the problem from the 
+page: CSGHJ + CBA, the answer is out of range. Convert sum to string and break it down one by one? 
+So far this last part has been difficult for me, plus I'm not even really doing what the problem asked,
+so I am taking a break. */
+
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+int main () {
+
+    std::vector<int> numbers {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+                      17, 18, 19, 20, 21, 22, 23, 24, 25};  
+
+    std::vector<char> letters {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
+                                'M', 'N', 'O', 'P', 'Q', 'R','S', 'T', 'U', 'V', 'W', 'X',
+                                'Y', 'Z'};
+
+    // Declaring the iterator, must be same type as the vector we are searching (char).
+    std::vector<char>::iterator it;
+    std::vector<int>::iterator it2;
+    
+    // First trying to do this only with an internal addition and declared variables.
+    std::string let1 = "ABC";
+    std::string let2 = "DEF";
+
+    /* Here the iterator works:
+
+    it = find(letters.begin(), letters.end(), 'Z');
+
+    if (it != letters.end())
+        std::cout << "Element found in letters at position: " << ((it - letters.begin())) << std::endl;
+    else 
+        std::cout << "Element not found in letters." << std::endl;
+    */
+
+    /*****************************************************************
+     * Attempting to do the arithmetic below:                        *
+     * **************************************************************/
+
+    int num1 = 0;
+    int num2 = 0;
+    
+    for(int count = 0; count < let1.length(); count++) {
+        // Find let1.at(count) within letters, then find corresponding element in numbers.
+        it = find(letters.begin(), letters.end(), let1.at(count));
+        if (it != letters.end())
+            std::cout << "Found " << let1.at(count) << " in letters vector, at position " << ((it - letters.begin())) << std::endl;
+        else 
+            std::cout << "Element not found in letters." << std::endl;
+        
+        // Add the position of the where the letter was found into an integer variable. (Don't think I even need the numbers vector, will delete when sure.)
+        // 'ABC' = 3.
+        num1 = num1 + ((it - letters.begin()));
+        std::cout << num1 << std::endl;
+    }
+
+    for(int count = 0; count < let2.length(); count++) {
+        // Find let1.at(count) within letters, then find corresponding element in numbers.
+        it = find(letters.begin(), letters.end(), let2.at(count));
+        if (it != letters.end())
+            std::cout << "Found " << let2.at(count) << " in letters vector, at position " << ((it - letters.begin())) << std::endl;
+        else 
+            std::cout << "Element not found in letters." << std::endl;
+        
+        // Add the position of the where the letter was found into an integer variable. 
+        // 'DEF' = 12.
+        num2 = num2 + ((it - letters.begin()));
+        std::cout << num2 << std::endl;
+    }
+
+    // Computes 15.
+    int sum = (num1 + num2);
+    std::cout << (num1 + num2) << std::endl;
+
+    // So, need to find a way to make the 15 output as the 15th element of vector letters, which is 
+    // std::cout << letters.at(sum);
+
+    char strSum = sum;
+    std::cout << strSum;
+
+    for(int count = 0; count < strSum.length(); count++) {
+        // Find strSum.at(count) within numbers, then find corresponding element in letters.
+        it2 = find(numbers.begin(), numbers.end(), strSum);
+        if (it2 != numbers.end())
+            std::cout << "Found " << strSum << " in numbers vector, at position " << ((it2 - numbers.begin())) << std::endl;
+        else 
+            std::cout << "Element not found in numbers." << std::endl;
+        
+      
+    }
+    
+
+    return 0;
+}
